@@ -125,22 +125,7 @@ h1{font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:clamp(35px,1
 @keyframes eq{0%,100%{height:4px}50%{height:16px}}
 
 /* ---------- name + age gate ---------- */
-.gate{padding:16px;border-radius:22px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.gate label{display:block;margin-bottom:8px;font-size:14.5px;font-weight:700;color:#e9eeff}
-.fields{display:grid;grid-template-columns:1fr 112px;gap:10px}
-.name-input{width:100%;min-height:52px;padding:0 16px;background:rgba(7,12,50,.55);border:1.5px solid var(--line);border-radius:14px;color:var(--snow);font-family:Mukta,sans-serif;font-size:16px;font-weight:600;outline:none;transition:border-color .2s,box-shadow .2s}
-.age-input{-moz-appearance:textfield}
-.age-input::-webkit-outer-spin-button,.age-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.name-input::placeholder{color:#8e9bd2;font-weight:500}
-.name-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(43,182,255,.22)}
-.name-input.invalid{border-color:var(--coral)!important;animation:shakeX .45s ease}
-.name-error{display:flex;align-items:center;gap:8px;color:#ff8da1;font-size:14px;font-weight:700;max-height:0;opacity:0;overflow:hidden;transition:max-height .25s ease,opacity .25s ease,margin .25s ease}
-.name-error.show{max-height:56px;opacity:1;margin-top:10px;animation:popIn .4s ease}
-.name-error .ic{display:inline-flex;width:18px;height:18px;border-radius:50%;background:var(--coral);color:#2b0710;font-size:12px;font-weight:900;align-items:center;justify-content:center;flex-shrink:0;animation:pulseRing 1s ease-in-out 2}
-@keyframes shakeX{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-8px)}40%,60%{transform:translateX(8px)}}
-@keyframes popIn{0%{transform:translateY(-4px) scale(.9);opacity:0}60%{transform:translateY(0) scale(1.03);opacity:1}100%{transform:translateY(0) scale(1)}}
-@keyframes pulseRing{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
-
+.gate{padding:14px 16px 16px;border-radius:22px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 /* ---------- THE telegram button ---------- */
 .btn{position:relative;display:flex;align-items:center;justify-content:center;gap:11px;width:100%;min-height:60px;margin-top:14px;padding:12px 22px;border-radius:20px;overflow:hidden;isolation:isolate;cursor:pointer;
   font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:19px;line-height:1.2;color:#fff;text-shadow:0 1px 2px rgba(10,18,64,.35);
@@ -157,11 +142,6 @@ h1{font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:clamp(35px,1
   0%{box-shadow:0 14px 34px rgba(79,123,255,.45),inset 0 1px 0 rgba(255,255,255,.4),0 0 0 0 rgba(43,182,255,.6)}
   70%,100%{box-shadow:0 14px 34px rgba(79,123,255,.45),inset 0 1px 0 rgba(255,255,255,.4),0 0 0 18px rgba(43,182,255,0)}}
 @keyframes fly{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(3px,-3px) rotate(-8deg)}}
-.btn.flash-invalid{animation:btnFlash .5s ease}
-@keyframes btnFlash{
-  0%,100%{transform:none;box-shadow:0 14px 34px rgba(79,123,255,.45)}
-  30%{transform:translateX(-6px);box-shadow:0 0 0 5px rgba(255,92,122,.5),0 14px 34px rgba(255,92,122,.4)}
-  60%{transform:translateX(6px);box-shadow:0 0 0 5px rgba(255,92,122,.5),0 14px 34px rgba(255,92,122,.4)}}
 
 .perks{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
 .perks span{display:inline-flex;align-items:center;gap:6px;padding:4px 12px 4px 8px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-size:13.5px;font-weight:600;color:#e3e9ff}
@@ -200,7 +180,12 @@ h1{font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:clamp(35px,1
 
 .disc{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);color:#8a97cf;font-size:12px;line-height:1.8;text-align:center}
 .footer-credit{margin-top:12px;text-align:center;color:var(--mist);font-size:13px}
-.footer-credit a{color:var(--sky);font-weight:700}
+.footer-credit span{color:var(--sky);font-weight:700}
+
+/* ---------- in-app browser banner (iOS) ---------- */
+.iab{position:fixed;top:0;left:0;right:0;z-index:50;padding:calc(8px + var(--safe-t)) 14px 8px;background:#ffcf3d;color:#2a1600;font-size:13.5px;font-weight:700;line-height:1.45;text-align:center}
+.iab .u{color:#2a1600;text-align:center;font-size:13px}
+.iab button{position:absolute;right:8px;top:calc(4px + var(--safe-t));font-size:20px;line-height:1;padding:4px 8px;color:#2a1600}
 
 /* ---------- sticky mobile dock ---------- */
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:22px 14px calc(10px + var(--safe-b));background:linear-gradient(180deg,rgba(10,18,64,0),rgba(10,18,64,.92) 45%);transform:translateY(130%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
@@ -216,12 +201,6 @@ h1{font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:clamp(35px,1
 .chart-head>span{line-height:1.25}
 .cf-text{flex:1 1 200px}
 .cf-text p{flex:none}
-.gate label small{margin-top:2px}
-.fields{grid-template-columns:1fr 128px}
-.name-input::placeholder{font-size:14px}
-.name-error>div{line-height:1.5}
-.name-error .en,.name-error .u{font-size:13px;color:#ffb3c0}
-.name-error.show{max-height:130px}
 .btn .lb{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.15}
 .btn .lb small{margin-top:3px;font-family:Mukta,"Noto Nastaliq Urdu",sans-serif;font-weight:600;font-size:12.5px;opacity:.95;text-shadow:none}
 .perks span{justify-content:center;text-align:center}
@@ -321,17 +300,6 @@ h1{font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:clamp(35px,1
 
     <div class="c">
       <div class="gate">
-        <label for="userName">जॉइन करने से पहले अपनी जानकारी भरें<small class="sub">Fill in your details before joining · جوائن کرنے سے پہلے اپنی معلومات بھریں</small></label>
-        <div class="fields">
-          <input type="text" id="userName" class="name-input" placeholder="नाम · Name · نام" autocomplete="name">
-          <input type="number" id="userAge" class="name-input age-input" placeholder="उम्र · Age · عمر" min="1" max="120" autocomplete="off" inputmode="numeric">
-        </div>
-        <div class="name-error" id="nameError"><span class="ic">!</span><div>
-          <span>पहले नाम और उम्र लिखें, फिर जॉइन करें</span>
-          <span class="en" lang="en">Enter your name and age first, then join</span>
-          <span class="u" lang="ur" dir="rtl">پہلے نام اور عمر لکھیں، پھر جوائن کریں</span>
-        </div></div>
-
         <a class="btn join-link" id="heroCta" href="#">
           <span class="tg-ic"><svg><use href="#tg"/></svg></span>
           <span class="lb"><span>टेलीग्राम पर फ्री जुड़ें</span><small>Join Free on Telegram · ٹیلیگرام پر مفت جوائن کریں</small></span>
@@ -383,7 +351,7 @@ h1{font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:clamp(35px,1
     </a>
   </section>
 
-  <div class="footer-credit">विज्ञापन · Ad · اشتہار: <a href="#" class="join-link" target="_blank" rel="noopener">SRS Marketing Agency</a></div>
+  <div class="footer-credit">विज्ञापन · Ad · اشتہار: <span>SRS Marketing Agency</span></div>
 
   <div class="disc">
     <span>यह सामग्री केवल शिक्षा के उद्देश्य से है। यह निवेश, ट्रेडिंग या वित्तीय सलाह नहीं है।</span><br>
@@ -401,7 +369,7 @@ h1{font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:clamp(35px,1
 </div>
 
 <!-- =====================================================
-     TRACKING + NAME/AGE GATE  (original logic — unchanged)
+     TRACKING  (Name/Age gate removed — strict real-tap filtering instead)
      ===================================================== -->
 <script>
 (() => {
@@ -413,10 +381,8 @@ const CONFIG = Object.freeze({
 
   pageViewDelayMs: 3000,
   passiveReaderDelayMs: 8000,
-  minimumClickTimeMs: 1500,
-  confirmWindowMs: 4000,
-  trackedRedirectDelayMs: 700,
-  fastRedirectDelayMs: 50,
+  minimumClickTimeMs: 1500,   /* isse pehle ka tap ignore (accidental / bot) */
+  inputToClickMaxMs: 5000,    /* click se pehle real touch/key hona chahiye */
 
   pageViewKey: 'shariah_pageview_sent',
   leadKey: 'shariah_lead_sent'
@@ -425,25 +391,44 @@ const CONFIG = Object.freeze({
 const startedAt = Date.now();
 let pageViewTracked = false;
 let leadTracked = false;
-let redirectStarted = false;
 let humanInteraction = false;
 let hasScrolled = false;
+let lastInputAt = 0;
+
+const UA = navigator.userAgent || '';
+const IS_ANDROID = /android/i.test(UA);
+const IS_IOS = /iphone|ipad|ipod/i.test(UA);
+const IN_APP = /FBAN|FBAV|FB_IAB|FBIOS|Instagram/i.test(UA);
 
 function createEventId(type) {
   if (window.crypto && crypto.randomUUID) return type + '_' + crypto.randomUUID();
   return type + '_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
 }
-
 function sessionHas(key) { try { return sessionStorage.getItem(key) === '1'; } catch (e) { return false; } }
 function sessionSave(key) { try { sessionStorage.setItem(key, '1'); } catch (e) {} }
 
 function looksAutomated() {
   if (navigator.webdriver === true) return true;
-  const ua = navigator.userAgent.toLowerCase();
-  const words = ['headless', 'phantomjs', 'selenium', 'puppeteer', 'playwright', 'crawler', 'spider', 'slurp', 'googlebot', 'bingbot', 'facebookexternalhit'];
+  const ua = UA.toLowerCase();
+  const words = ['headless', 'phantomjs', 'selenium', 'puppeteer', 'playwright', 'crawler', 'spider', 'slurp', 'googlebot', 'bingbot', 'facebookexternalhit', 'bot/', 'lighthouse'];
   return words.some(w => ua.includes(w));
 }
 
+/* ---------- Telegram href (set only after a real human input) ---------- */
+function telegramHref() {
+  /* Android FB/Instagram in-app browser: seedha Telegram app kholo (fallback = normal t.me link) */
+  if (IN_APP && IS_ANDROID) {
+    const hash = (CONFIG.telegramUrl.split('+')[1] || '').trim();
+    if (hash) {
+      return 'intent://join?invite=' + hash +
+        '#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=' +
+        encodeURIComponent(CONFIG.telegramUrl) + ';end';
+    }
+  }
+  return CONFIG.telegramUrl;
+}
+
+/* ---------- human input tracking ---------- */
 function recordInteraction(event) {
   if (!event.isTrusted) return;
   humanInteraction = true;
@@ -453,7 +438,17 @@ function recordInteraction(event) {
 ['pointerdown', 'touchstart', 'keydown', 'scroll', 'mousemove'].forEach(name => {
   window.addEventListener(name, recordInteraction, { passive: true, once: true });
 });
+['pointerdown', 'touchstart', 'keydown'].forEach(name => {
+  document.addEventListener(name, e => {
+    if (!e.isTrusted) return;
+    lastInputAt = Date.now();
+    /* real href sirf real touch/key ke baad lagta hai — crawlers/scanners ko t.me link nahi dikhta */
+    const link = e.target && e.target.closest ? e.target.closest('.join-link') : null;
+    if (link) link.setAttribute('href', telegramHref());
+  }, { capture: true, passive: true });
+});
 
+/* ---------- Pixel ---------- */
 function loadPixel() {
   if (!window.fbq) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=true;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=true;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -465,7 +460,11 @@ function loadPixel() {
       registered = fbq.getState().pixels.some(p => String(p.id) === String(CONFIG.pixelId));
     }
   } catch (e) {}
-  if (!registered) fbq('init', CONFIG.pixelId);
+  if (!registered) {
+    /* Meta ke automatic button-click events band — sirf hamara controlled Lead jayega */
+    try { fbq('set', 'autoConfig', false, CONFIG.pixelId); } catch (e) {}
+    fbq('init', CONFIG.pixelId);
+  }
   window.__SHARIAH_PIXEL_INIT = true;
 }
 
@@ -496,7 +495,7 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
 setTimeout(checkQualifiedPageView, CONFIG.pageViewDelayMs);
 setTimeout(checkQualifiedPageView, CONFIG.passiveReaderDelayMs);
 
-function fireLead(elapsedMs, visitorName) {
+function fireLead(elapsedMs) {
   if (leadTracked) return;
   if (sessionHas(CONFIG.leadKey)) { leadTracked = true; return; }
   if (typeof window.fbq !== 'function') return;
@@ -507,7 +506,7 @@ function fireLead(elapsedMs, visitorName) {
     content_name: 'Trade with Salman Memon - Shariah Rules',
     destination: 'Telegram',
     qualified_click: true,
-    human_interaction: humanInteraction,
+    human_interaction: true,
     time_on_page: Math.round(elapsedMs / 1000)
   }, { eventID: createEventId('lead') });
 
@@ -515,89 +514,50 @@ function fireLead(elapsedMs, visitorName) {
   sessionSave(CONFIG.leadKey);
 }
 
-function showNameError(inputs) {
-  const errorBox = document.getElementById('nameError');
-  const list = Array.isArray(inputs) ? inputs : [inputs];
+/* ---------- Telegram click: real <a href>, NO setTimeout, NO redirect script ----------
+   Allowed tap  -> browser khud link kholta hai (user-activation safe, Telegram app hand-off sahi)
+   Blocked tap  -> preventDefault: na Telegram jaata hai, na Meta Lead */
+function handleTelegramClick(event) {
+  const link = event.currentTarget;
+  const now = Date.now();
+  const elapsed = now - startedAt;
 
-  list.forEach(input => {
-    input.classList.remove('invalid');
-    void input.offsetWidth; /* restart shake animation */
-    input.classList.add('invalid');
-  });
+  const realTap = event.isTrusted &&
+                  !looksAutomated() &&
+                  lastInputAt > 0 &&
+                  (now - lastInputAt) <= CONFIG.inputToClickMaxMs;
 
-  if (errorBox) {
-    errorBox.classList.remove('show');
-    void errorBox.offsetWidth;
-    errorBox.classList.add('show');
+  if (!realTap || elapsed < CONFIG.minimumClickTimeMs) {
+    event.preventDefault();
+    return;
   }
 
-  document.querySelectorAll('.btn.join-link').forEach(b => {
-    b.classList.remove('flash-invalid');
-    void b.offsetWidth;
-    b.classList.add('flash-invalid');
-    setTimeout(() => b.classList.remove('flash-invalid'), 550);
-  });
+  const href = telegramHref();
+  if (link.getAttribute('href') !== href) link.setAttribute('href', href);
 
-  const target = list[0];
-  target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  target.focus({ preventScroll: true });
+  fireLead(elapsed);
+  /* preventDefault nahi — anchor apne aap Telegram kholega */
 }
 
-function handleTelegramClick(event) {
-  event.preventDefault();
-
-  /* ===== NAME + AGE GATE =====
-     Bina naam aur age likhe koi bhi Telegram button kaam nahi karega —
-     dono invalid inputs red ho jaate hain, animated error message dikhta hai,
-     aur user ko wahin le jaya jaata hai. */
-  const nameInput = document.getElementById('userName');
-  const ageInput = document.getElementById('userAge');
-  const name = nameInput ? nameInput.value.trim() : '';
-  const age = ageInput ? ageInput.value.trim() : '';
-
-  const invalid = [];
-  if (!name && nameInput) invalid.push(nameInput);
-  if (!age && ageInput) invalid.push(ageInput);
-
-  if (invalid.length) {
-    showNameError(invalid);
-    [nameInput, ageInput].forEach(input => {
-      if (!input) return;
-      input.addEventListener('input', function clearInvalid() {
-        if (input.value.trim()) {
-          input.classList.remove('invalid');
-          const stillInvalid = [nameInput, ageInput].some(i => i && !i.value.trim());
-          if (!stillInvalid) {
-            const errorBox = document.getElementById('nameError');
-            if (errorBox) errorBox.classList.remove('show');
-          }
-        }
-      }, { once: false });
-    });
-    return;
-  }
-
-  if (redirectStarted) {
-    window.location.assign(CONFIG.telegramUrl);
-    return;
-  }
-  redirectStarted = true;
-
-  const elapsed = Date.now() - startedAt;
-  const genuine = event.isTrusted && elapsed >= CONFIG.minimumClickTimeMs && !looksAutomated();
-
-  if (genuine) fireLead(elapsed, name, age);
-
-  setTimeout(() => {
-    window.location.assign(CONFIG.telegramUrl);
-  }, genuine ? CONFIG.trackedRedirectDelayMs : CONFIG.fastRedirectDelayMs);
+/* iOS Facebook/Instagram browser: t.me app hand-off kabhi fail hota hai, isliye ek chhota hint */
+function showInAppHint() {
+  if (!(IN_APP && IS_IOS)) return;
+  const bar = document.createElement('div');
+  bar.className = 'iab';
+  bar.innerHTML = '<div>Telegram न खुले तो ऊपर/नीचे ⋯ दबाकर "Open in Browser" चुनें</div>' +
+                  '<div lang="en">If Telegram does not open, tap ⋯ and choose "Open in Browser"</div>' +
+                  '<div class="u" lang="ur" dir="rtl">ٹیلیگرام نہ کھلے تو ⋯ دبا کر "Open in Browser" چنیں</div>' +
+                  '<button type="button" aria-label="Close">×</button>';
+  bar.querySelector('button').addEventListener('click', () => bar.remove());
+  document.body.appendChild(bar);
 }
 
 function initButtons() {
   document.querySelectorAll('.join-link').forEach(btn => {
-    btn.href = CONFIG.telegramUrl;
+    btn.setAttribute('href', '#');      /* real URL touch ke baad hi lagta hai */
     btn.addEventListener('click', handleTelegramClick);
   });
+  showInAppHint();
 }
 
 loadPixel();
