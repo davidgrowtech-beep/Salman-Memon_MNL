@@ -13,7 +13,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -39,9 +39,9 @@ body{background:var(--bg);color:var(--text);font-family:Mukta,"Noto Sans Devanag
 h1{margin-top:22px;font-size:28px;line-height:1.25;font-weight:700;text-align:center}
 .lead{margin-top:10px;text-align:center;font-size:16.5px}
 .en{display:block;margin-top:6px;text-align:center;font-size:14.5px;color:var(--muted)}
-.ur{display:block;margin-top:4px;text-align:center;direction:rtl;font-family:"Noto Nastaliq Urdu",serif;font-size:14.5px;line-height:2.1;color:var(--muted)}
+.ur{display:block;margin-top:4px;text-align:center;direction:rtl;font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Geeza Pro","Noto Naskh Arabic",serif;font-size:14.5px;line-height:2.1;color:var(--muted)}
 
-.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:58px;margin-top:24px;padding:11px 18px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none;font-size:18px;font-weight:700;line-height:1.25;text-align:center;cursor:pointer}
+.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:58px;margin-top:24px;padding:11px 18px;border:0;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none;font:inherit;font-size:18px;font-weight:700;line-height:1.25;text-align:center;cursor:pointer}
 .btn small{margin-top:2px;font-size:13px;font-weight:600;opacity:.92}
 .btn:active{filter:brightness(.92)}
 .note{margin-top:10px;text-align:center;font-size:13px;color:var(--muted)}
@@ -57,6 +57,24 @@ h1{margin-top:22px;font-size:28px;line-height:1.25;font-weight:700;text-align:ce
 .disc{margin-top:26px;font-size:12px;line-height:1.8;color:#7c879c;text-align:center}
 .disc .ur{font-size:12px;color:#7c879c}
 .ad{margin-top:12px;text-align:center;font-size:12px;color:#7c879c}
+
+/* step sheet + return nudge */
+.sheet{position:fixed;inset:0;z-index:50;display:none;align-items:flex-end;justify-content:center;padding:0 12px calc(12px + var(--safe-b));background:rgba(2,6,23,.74)}
+.sheet.on{display:flex}
+.panel{width:100%;max-width:440px;padding:20px 18px 14px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.panel h3{font-size:20px;line-height:1.3;text-align:center}
+.steps{list-style:none;margin-top:14px;display:grid;gap:10px}
+.steps li{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:#1c2942}
+.steps i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-style:normal;font-weight:700;font-size:14px;line-height:26px;text-align:center}
+.steps b{display:block;font-size:15.5px;line-height:1.4}
+.steps span{display:block;font-size:13px;color:var(--muted);line-height:1.5}
+.panel .btn{margin-top:16px}
+.later{display:block;width:100%;margin-top:6px;padding:10px;border:0;background:none;color:var(--muted);font:inherit;font-size:13.5px;cursor:pointer}
+.nudge{position:fixed;left:12px;right:12px;bottom:calc(12px + var(--safe-b));z-index:60;display:none;max-width:440px;margin:0 auto;padding:16px;border:1px solid #2f4d6b;border-radius:16px;background:#12304a;box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.nudge.on{display:block}
+.nudge p{font-size:15px;line-height:1.5;text-align:center}
+.nudge p small{display:block;margin-top:2px;font-size:12.5px;color:var(--muted)}
+.nudge .btn{margin-top:12px;min-height:50px;font-size:16.5px}
 </style>
 </head>
 <body>
@@ -74,11 +92,11 @@ h1{margin-top:22px;font-size:28px;line-height:1.25;font-weight:700;text-align:ce
     <span class="en" lang="en">Understand Entry, Target and Stop-Loss through simple chart examples.</span>
     <span class="ur" lang="ur" dir="rtl">آسان چارٹ مثالوں سے Entry، Target اور Stop-Loss کی بنیادی سمجھ۔</span>
 
-    <a class="btn join-link" href="#" rel="noopener">
+    <button class="btn" id="open" type="button" aria-haspopup="dialog">
       <span>टेलीग्राम चैनल जॉइन करें</span>
       <small>Join the Telegram channel · ٹیلیگرام چینل جوائن کریں</small>
-    </a>
-    <p class="note">Telegram खुलने पर जॉइन बटन दबाएँ · Tap the join button when Telegram opens</p>
+    </button>
+    <p class="note">Telegram खुलने पर नीचे "Request to Join" बटन दबाएँ · Tap "Request to Join" when Telegram opens</p>
     <p class="iab" id="iab">Telegram न खुले तो ऊपर ⋯ दबाकर "Open in Browser" चुनें · If Telegram does not open, tap ⋯ and choose "Open in Browser"</p>
 
     <section class="card" aria-label="चैनल में क्या है">
@@ -98,6 +116,32 @@ h1{margin-top:22px;font-size:28px;line-height:1.25;font-weight:700;text-align:ce
 
 </div>
 
+<!-- Step 2: short instruction sheet (Lead fires only from this confirm tap) -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-t" aria-hidden="true">
+  <div class="panel">
+    <h3 id="sheet-t">सिर्फ़ 2 आसान स्टेप<br><span class="en" style="margin-top:0">Just 2 simple steps</span></h3>
+    <ol class="steps">
+      <li><i>1</i><div><b>Telegram खुलेगा</b><span>Telegram will open · ٹیلیگرام کھلے گا</span></div></li>
+      <li><i>2</i><div><b>नीचे "Request to Join" (या "Join Channel") बटन दबाएँ</b><span>Tap the "Request to Join" button at the bottom · نیچے "Request to Join" کا بٹن دبائیں</span></div></li>
+    </ol>
+    <a class="btn" id="go" href="#" rel="noopener">
+      <span>ठीक है, Telegram खोलें</span>
+      <small>OK, open Telegram</small>
+    </a>
+    <button class="later" id="later" type="button">अभी नहीं · Not now</button>
+  </div>
+</div>
+
+<!-- Shown only when user comes back from Telegram without finishing -->
+<div class="nudge" id="nudge" role="status" aria-live="polite">
+  <p>Telegram में "Request to Join" दबाया?<small>Did you tap "Request to Join" in Telegram?</small></p>
+  <a class="btn" id="again" href="#" rel="noopener">
+    <span>दोबारा Telegram खोलें</span>
+    <small>Open Telegram again</small>
+  </a>
+  <button class="later" id="done" type="button">हो गया · Done</button>
+</div>
+
 <script>
 (() => {
 'use strict';
@@ -108,13 +152,19 @@ const CONFIG = Object.freeze({
 
   pageViewDelayMs: 3000,
   passiveReaderDelayMs: 8000,
-  minimumClickTimeMs: 1500,   /* isse pehle ka tap ignore */
+  minSheetMs: 700,            /* sheet padhne ka minimum time, usse pehle Lead nahi (link phir bhi khulta hai) */
   inputToClickMaxMs: 5000,    /* click se pehle real touch/key hona chahiye */
+  returnMinAwayMs: 2000,      /* itni der Telegram me rahe to wapsi par nudge */
+  maxNudges: 2,
   leadTtlMs: 24 * 60 * 60 * 1000,
 
   pageViewKey: 'shariah_pageview_sent',
   leadKey: 'shariah_lead_sent'
 });
+
+const $ = id => document.getElementById(id);
+const openBtn = $('open'), sheet = $('sheet'), go = $('go'), later = $('later');
+const nudge = $('nudge'), again = $('again'), done = $('done');
 
 const startedAt = Date.now();
 let pageViewTracked = false;
@@ -122,6 +172,10 @@ let leadTracked = false;
 let humanInteraction = false;
 let hasScrolled = false;
 let lastInputAt = 0;
+let sheetOpenedAt = 0;
+let armed = false;        /* user ne Telegram kholne ka confirm tap kiya */
+let hiddenAt = 0;
+let nudgeCount = 0;
 
 const UA = navigator.userAgent || '';
 const IN_APP = /FBAN|FBAV|FB_IAB|FBIOS|Instagram/i.test(UA);
@@ -162,13 +216,7 @@ function recordInteraction(event) {
   window.addEventListener(name, recordInteraction, { passive: true, once: true });
 });
 ['pointerdown', 'touchstart', 'keydown'].forEach(name => {
-  document.addEventListener(name, e => {
-    if (!e.isTrusted) return;
-    lastInputAt = Date.now();
-    /* real t.me link sirf real touch/key ke baad lagta hai — scanners/crawlers ko link nahi dikhta */
-    const link = e.target && e.target.closest ? e.target.closest('.join-link') : null;
-    if (link) link.setAttribute('href', CONFIG.telegramUrl);
-  }, { capture: true, passive: true });
+  document.addEventListener(name, e => { if (e.isTrusted) lastInputAt = Date.now(); }, { capture: true, passive: true });
 });
 
 /* ---------- Pixel ---------- */
@@ -184,7 +232,7 @@ function loadPixel() {
     }
   } catch (e) {}
   if (!registered) {
-    /* Meta ke automatic button-click events band — sirf hamara controlled Lead jayega */
+    /* Meta ke automatic button-click events band: sirf hamara controlled Lead jayega */
     try { fbq('set', 'autoConfig', false, CONFIG.pixelId); } catch (e) {}
     fbq('init', CONFIG.pixelId);
   }
@@ -214,7 +262,6 @@ function checkQualifiedPageView() {
   pageViewTracked = true;
   sessionSave(CONFIG.pageViewKey);
 }
-document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkQualifiedPageView(); });
 setTimeout(checkQualifiedPageView, CONFIG.pageViewDelayMs);
 setTimeout(checkQualifiedPageView, CONFIG.passiveReaderDelayMs);
 
@@ -228,6 +275,7 @@ function fireLead(elapsedMs) {
     content_name: 'Trade with Salman Memon - Shariah Rules',
     destination: 'Telegram',
     qualified_click: true,
+    confirmed_step: true,
     human_interaction: true,
     time_on_page: Math.round(elapsedMs / 1000)
   }, { eventID: createEventId('lead') });
@@ -236,34 +284,73 @@ function fireLead(elapsedMs) {
   markLeadSent();
 }
 
-/* ---------- Telegram click: real <a href>, no setTimeout, no redirect script ----------
-   Allowed tap -> browser khud link kholta hai
-   Blocked tap -> preventDefault: na Telegram jaata hai, na Meta Lead */
-function handleTelegramClick(event) {
-  const link = event.currentTarget;
-  const now = Date.now();
-  const elapsed = now - startedAt;
-
-  const realTap = event.isTrusted &&
-                  !looksAutomated() &&
-                  lastInputAt > 0 &&
-                  (now - lastInputAt) <= CONFIG.inputToClickMaxMs;
-
-  if (!realTap || elapsed < CONFIG.minimumClickTimeMs) {
-    event.preventDefault();
-    return;
-  }
-
-  if (link.getAttribute('href') !== CONFIG.telegramUrl) link.setAttribute('href', CONFIG.telegramUrl);
-  fireLead(elapsed);
+/* ---------- Step 2 sheet ----------
+   Pehla tap: sirf sheet khulti hai (koi Lead nahi, koi t.me link page me nahi).
+   Doosra tap (confirm): real <a href> se Telegram khulta hai, Lead sirf yahin.
+   Koi bhi asli tap kabhi block nahi hota: sirf Lead ka qualification check hota hai. */
+function openSheet(e) {
+  if (!e.isTrusted) return;
+  go.setAttribute('href', CONFIG.telegramUrl);
+  sheet.classList.add('on');
+  sheet.setAttribute('aria-hidden', 'false');
+  sheetOpenedAt = Date.now();
+  try { go.focus({ preventScroll: true }); } catch (x) {}
+}
+function closeSheet() {
+  sheet.classList.remove('on');
+  sheet.setAttribute('aria-hidden', 'true');
+  try { openBtn.focus({ preventScroll: true }); } catch (x) {}
 }
 
+function onConfirm(e) {
+  if (!e.isTrusted) { e.preventDefault(); return; }   /* scripted click: na Telegram, na Lead */
+  const now = Date.now();
+  const qualified = !looksAutomated() &&
+                    lastInputAt > 0 && (now - lastInputAt) <= CONFIG.inputToClickMaxMs &&
+                    sheetOpenedAt > 0 && (now - sheetOpenedAt) >= CONFIG.minSheetMs;
+  if (qualified) fireLead(now - startedAt);
+  armed = true;
+  setTimeout(() => { sheet.classList.remove('on'); sheet.setAttribute('aria-hidden', 'true'); }, 400);
+  /* default action (real link navigation) chalne dein */
+}
+
+/* ---------- Return nudge: Telegram se bina request kiye wapas aaye ---------- */
+function showNudge() {
+  if (!armed || nudgeCount >= CONFIG.maxNudges) return;
+  nudgeCount++;
+  sheet.classList.remove('on');
+  again.setAttribute('href', CONFIG.telegramUrl);
+  nudge.classList.add('on');
+}
+function onVisibility() {
+  if (document.visibilityState === 'hidden') {
+    if (armed) hiddenAt = Date.now();
+    return;
+  }
+  checkQualifiedPageView();
+  if (armed && hiddenAt && (Date.now() - hiddenAt) >= CONFIG.returnMinAwayMs) {
+    hiddenAt = 0;
+    showNudge();
+  }
+}
+document.addEventListener('visibilitychange', onVisibility);
+window.addEventListener('pageshow', e => { if (e.persisted) showNudge(); });
+
 function init() {
-  document.querySelectorAll('.join-link').forEach(btn => {
-    btn.setAttribute('href', '#');
-    btn.addEventListener('click', handleTelegramClick);
+  openBtn.addEventListener('click', openSheet);
+  go.addEventListener('click', onConfirm);
+  later.addEventListener('click', closeSheet);
+  sheet.addEventListener('click', e => { if (e.target === sheet) closeSheet(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && sheet.classList.contains('on')) closeSheet(); });
+
+  again.addEventListener('click', e => {
+    if (!e.isTrusted) { e.preventDefault(); return; }
+    armed = true;
+    setTimeout(() => nudge.classList.remove('on'), 400);
   });
-  if (IN_APP) { const n = document.getElementById('iab'); if (n) n.style.display = 'block'; }
+  done.addEventListener('click', () => { nudge.classList.remove('on'); armed = false; });
+
+  if (IN_APP) { const n = $('iab'); if (n) n.style.display = 'block'; }
 }
 
 loadPixel();
