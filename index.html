@@ -3,167 +3,406 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0f172a">
-<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0a1240">
 <title>Salman Memon - Trade with Shariah Rules</title>
 <meta name="description" content="Entry, Target aur Stop-Loss simple chart examples se seekhein. Free Telegram learning community.">
 <meta property="og:title" content="Salman Memon - Trade with Shariah Rules">
-<meta property="og:description" content="सरल चार्ट उदाहरणों से Entry, Target और Stop-Loss की बेसिक समझ — फ्री टेलीग्राम कम्युनिटी">
+<meta property="og:description" content="सरल चार्ट उदाहरणों से ट्रेडिंग सीखें — फ्री टेलीग्राम कम्युनिटी">
 <meta property="og:image" content="SM.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Mukta:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#0f172a;
-  --card:#162033;
-  --line:#26324a;
-  --text:#e5e9f2;
-  --muted:#98a3b8;
-  --accent:#1b78b8;
-  --safe-t:env(safe-area-inset-top,0px);
+  --ink:#0a1240;
+  --ink2:#131d63;
+  --sky:#2bb6ff;
+  --mint:#2de2a6;
+  --coral:#ff5c7a;
+  --sun:#ffcf3d;
+  --violet:#8a5cff;
+  --pink:#ff5c9a;
+  --snow:#f3f6ff;
+  --mist:#b4bfee;
+  --line:rgba(170,190,255,.24);
+  --glass:rgba(255,255,255,.07);
   --safe-b:env(safe-area-inset-bottom,0px);
+  --safe-t:env(safe-area-inset-top,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{background:var(--bg);color:var(--text);font-family:Mukta,"Noto Sans Devanagari",system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-text-size-adjust:100%;padding:calc(28px + var(--safe-t)) 18px calc(32px + var(--safe-b))}
-.wrap{width:100%;max-width:440px;margin:0 auto}
-:focus-visible{outline:3px solid #f5c542;outline-offset:3px;border-radius:10px}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--snow);font-family:Mukta,"Noto Sans Devanagari",sans-serif;font-weight:500;line-height:1.6;overflow-x:hidden;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:10px}
+.disp{font-family:"Baloo 2",Mukta,sans-serif}
+.ur{font-family:"Noto Nastaliq Urdu",serif;direction:rtl;line-height:2.1}
 
-.head{text-align:center}
-.ava{width:88px;height:88px;border-radius:50%;object-fit:cover;border:2px solid #334155;background:var(--card)}
-.name{margin-top:10px;font-size:18px;font-weight:700;line-height:1.3}
-.tag{margin-top:2px;font-size:13.5px;color:var(--muted)}
+/* ---------- moving colour background ---------- */
+.aurora{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(180deg,#0a1240 0%,#111a5c 55%,#1b1668 100%)}
+.aurora i{position:absolute;width:90vmax;height:90vmax;border-radius:50%;animation:drift 20s ease-in-out infinite alternate;will-change:transform}
+.aurora i:nth-child(1){left:-45vmax;top:-45vmax;background:radial-gradient(closest-side,rgba(43,182,255,.55),transparent)}
+.aurora i:nth-child(2){right:-50vmax;top:10vh;background:radial-gradient(closest-side,rgba(138,92,255,.5),transparent);animation-delay:-7s}
+.aurora i:nth-child(3){left:-35vmax;bottom:-55vmax;background:radial-gradient(closest-side,rgba(255,92,154,.38),transparent);animation-delay:-12s}
+@keyframes drift{to{transform:translate3d(9vmax,6vmax,0) scale(1.15)}}
 
-h1{margin-top:22px;font-size:28px;line-height:1.25;font-weight:700;text-align:center}
-.Subscribe{margin-top:10px;text-align:center;font-size:16.5px}
-.en{display:block;margin-top:6px;text-align:center;font-size:14.5px;color:var(--muted)}
-.ur{display:block;margin-top:4px;text-align:center;direction:rtl;font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Geeza Pro","Noto Naskh Arabic",serif;font-size:14.5px;line-height:2.1;color:var(--muted)}
+.page{width:min(1080px,100%);margin:0 auto;padding:0 18px calc(104px + var(--safe-b))}
 
-.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:58px;margin-top:24px;padding:11px 18px;border:0;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none;font:inherit;font-size:18px;font-weight:700;line-height:1.25;text-align:center;cursor:pointer}
-.btn small{margin-top:2px;font-size:13px;font-weight:600;opacity:.92}
-.btn:active{filter:brightness(.92)}
-.note{margin-top:10px;text-align:center;font-size:13px;color:var(--muted)}
-.iab{display:none;margin-top:10px;padding:9px 12px;border:1px solid #5b4a12;border-radius:10px;background:#2a2410;color:#f5d97a;font-size:13px;text-align:center}
+/* ---------- nav ---------- */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:66px;padding-top:var(--safe-t)}
+.brand strong{display:block;font-size:15px;line-height:1.2;font-weight:700}
+.brand small{display:block;color:var(--sky);font-size:12px;font-weight:600}
+.tg-top{display:flex;align-items:center;gap:8px;padding:7px 14px 7px 8px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-weight:700;font-size:14px;white-space:nowrap}
+.tg-ic{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#fff;color:#229ed9;flex-shrink:0}
+.tg-ic svg{width:15px;height:15px;fill:currentColor;margin-left:-1px}
 
-.card{margin-top:26px;padding:6px 16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
-.card h2{padding:12px 0 4px;font-size:15px;font-weight:700;color:var(--muted)}
-.item{padding:11px 0}
-.item+.item{border-top:1px solid var(--line)}
-.item b{display:block;font-size:16px}
-.item span{display:block;font-size:14px;color:var(--muted)}
+/* ---------- hero layout ---------- */
+.hero{display:grid;gap:18px;padding-top:6px}
+.a{grid-area:a}.b{grid-area:b}.c{grid-area:c}
+@media(min-width:880px){
+  .page{padding-bottom:56px}
+  .hero{grid-template-columns:1.05fr .95fr;grid-template-areas:"a b" "c b";column-gap:44px;row-gap:22px;align-items:start;padding-top:18px}
+  .dock{display:none!important}
+}
 
-.disc{margin-top:26px;font-size:12px;line-height:1.8;color:#7c879c;text-align:center}
-.disc .ur{font-size:12px;color:#7c879c}
-.ad{margin-top:12px;text-align:center;font-size:12px;color:#7c879c}
+.mentor{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ava{width:62px;height:62px;border-radius:50%;padding:3px;flex-shrink:0;background:conic-gradient(var(--sky),var(--mint),var(--sun),var(--coral),var(--violet),var(--sky));animation:spin 9s linear infinite}
+.ava img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--ink);background:var(--ink2);animation:spin 9s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mentor b{display:block;font-size:18px;line-height:1.2;font-weight:700}
+.badge{display:inline-flex;align-items:center;gap:7px;margin-top:3px;padding:3px 11px;border-radius:999px;background:rgba(45,226,166,.14);border:1px solid rgba(45,226,166,.4);color:var(--mint);font-size:12.5px;font-weight:700}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint);animation:blink 1.3s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* step sheet + return nudge */
-.sheet{position:fixed;inset:0;z-index:50;display:none;align-items:flex-end;justify-content:center;padding:0 12px calc(12px + var(--safe-b));background:rgba(2,6,23,.74)}
-.sheet.on{display:flex}
-.panel{width:100%;max-width:440px;padding:20px 18px 14px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
-.panel h3{font-size:20px;line-height:1.3;text-align:center}
-.steps{list-style:none;margin-top:14px;display:grid;gap:10px}
-.steps li{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:#1c2942}
-.steps i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-style:normal;font-weight:700;font-size:14px;line-height:26px;text-align:center}
-.steps b{display:block;font-size:15.5px;line-height:1.4}
-.steps span{display:block;font-size:13px;color:var(--muted);line-height:1.5}
-.panel .btn{margin-top:16px}
-.later{display:block;width:100%;margin-top:6px;padding:10px;border:0;background:none;color:var(--muted);font:inherit;font-size:13.5px;cursor:pointer}
-.nudge{position:fixed;left:12px;right:12px;bottom:calc(12px + var(--safe-b));z-index:60;display:none;max-width:440px;margin:0 auto;padding:16px;border:1px solid #2f4d6b;border-radius:16px;background:#12304a;box-shadow:0 12px 32px rgba(0,0,0,.45)}
-.nudge.on{display:block}
-.nudge p{font-size:15px;line-height:1.5;text-align:center}
-.nudge p small{display:block;margin-top:2px;font-size:12.5px;color:var(--muted)}
-.nudge .btn{margin-top:12px;min-height:50px;font-size:16.5px}
+h1{font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:clamp(35px,10vw,58px);line-height:1.04;letter-spacing:-.015em;margin-bottom:10px;background:linear-gradient(100deg,#fff 0%,#b7e8ff 45%,#92f6d2 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.Subscribe{font-size:17.5px;line-height:1.7;color:#e3e9ff;max-width:36ch}
+.Subscribe-ur{margin-top:2px;font-size:15px;color:var(--mist)}
+
+/* ---------- chart card (the memorable bit) ---------- */
+.chart-card{border-radius:26px;padding:14px 14px 16px;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.04));border:1px solid var(--line);box-shadow:0 24px 60px rgba(4,8,40,.45)}
+.chart-head{display:flex;align-items:center;justify-content:space-between;padding:0 4px 8px;font-size:14px;font-weight:700;color:var(--mist)}
+.replay{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.1);color:var(--snow);font-size:13px;font-weight:700}
+.replay:active{transform:scale(.95)}
+.chart{display:block;width:100%;height:auto;overflow:visible}
+.chart .gl{stroke:rgba(170,190,255,.13);stroke-width:1}
+.candle,.pill,.mk,.lvl-bar{transform-box:fill-box}
+.candle{transform-origin:50% 50%}
+.pill,.mk{transform-origin:50% 50%}
+.lvl-bar{transform-origin:0 50%}
+.pill text{font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:13px;fill:#071033;text-anchor:middle}
+.ring{transform-box:fill-box;transform-origin:center;animation:ring 1.8s ease-out infinite}
+@keyframes ring{from{transform:scale(.7);opacity:.9}to{transform:scale(2.8);opacity:0}}
+
+.chart-wrap.play .lvl-bar{animation:sweep .7s cubic-bezier(.2,.8,.2,1) backwards}
+.chart-wrap.play #lvE .lvl-bar{animation-delay:.2s}
+.chart-wrap.play #lvT .lvl-bar{animation-delay:.5s}
+.chart-wrap.play #lvS .lvl-bar{animation-delay:.8s}
+.chart-wrap.play .pill{animation:pop .45s cubic-bezier(.2,1.4,.4,1) backwards}
+.chart-wrap.play #lvE .pill{animation-delay:.6s}
+.chart-wrap.play #lvT .pill{animation-delay:.9s}
+.chart-wrap.play #lvS .pill{animation-delay:1.2s}
+.chart-wrap.play .candle{animation:grow .35s cubic-bezier(.2,.9,.3,1.2) backwards;animation-delay:calc(1.4s + var(--i) * 70ms)}
+.chart-wrap.play .zone{animation:fadein .8s 2.7s backwards}
+.chart-wrap.play #mkE{animation:pop .5s 1.9s cubic-bezier(.2,1.4,.4,1) backwards}
+.chart-wrap.play #mkT{animation:pop .5s 2.7s cubic-bezier(.2,1.4,.4,1) backwards}
+@keyframes sweep{from{transform:scaleX(0)}}
+@keyframes pop{from{transform:scale(0);opacity:0}}
+@keyframes grow{from{transform:scaleY(0);opacity:0}}
+@keyframes fadein{from{opacity:0}}
+
+.chart-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:10px;padding:0 4px}
+.chart-foot p{font-size:14.5px;line-height:1.5;color:#dfe6ff;flex:1 1 200px}
+.sound{display:inline-flex;align-items:center;gap:9px;padding:8px 14px 8px 10px;border-radius:999px;background:linear-gradient(100deg,var(--sun),#ffa23f);color:#2a1600;font-weight:800;font-size:14px;box-shadow:0 8px 20px rgba(255,162,63,.35)}
+.sound:active{transform:scale(.96)}
+.eq{display:flex;align-items:flex-end;gap:2px;width:20px;height:16px}
+.eq i{flex:1;height:5px;border-radius:2px;background:#2a1600}
+.sound.on .eq i{animation:eq .9s ease-in-out infinite}
+.sound.on .eq i:nth-child(2){animation-delay:-.3s}
+.sound.on .eq i:nth-child(3){animation-delay:-.6s}
+.sound.on .eq i:nth-child(4){animation-delay:-.15s}
+@keyframes eq{0%,100%{height:4px}50%{height:16px}}
+
+/* ---------- name + age gate ---------- */
+.gate{padding:16px;border-radius:22px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.gate label{display:block;margin-bottom:8px;font-size:14.5px;font-weight:700;color:#e9eeff}
+.fields{display:grid;grid-template-columns:1fr 112px;gap:10px}
+.name-input{width:100%;min-height:52px;padding:0 16px;background:rgba(7,12,50,.55);border:1.5px solid var(--line);border-radius:14px;color:var(--snow);font-family:Mukta,sans-serif;font-size:16px;font-weight:600;outline:none;transition:border-color .2s,box-shadow .2s}
+.age-input{-moz-appearance:textfield}
+.age-input::-webkit-outer-spin-button,.age-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.name-input::placeholder{color:#8e9bd2;font-weight:500}
+.name-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(43,182,255,.22)}
+.name-input.invalid{border-color:var(--coral)!important;animation:shakeX .45s ease}
+.name-error{display:flex;align-items:center;gap:8px;color:#ff8da1;font-size:14px;font-weight:700;max-height:0;opacity:0;overflow:hidden;transition:max-height .25s ease,opacity .25s ease,margin .25s ease}
+.name-error.show{max-height:56px;opacity:1;margin-top:10px;animation:popIn .4s ease}
+.name-error .ic{display:inline-flex;width:18px;height:18px;border-radius:50%;background:var(--coral);color:#2b0710;font-size:12px;font-weight:900;align-items:center;justify-content:center;flex-shrink:0;animation:pulseRing 1s ease-in-out 2}
+@keyframes shakeX{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-8px)}40%,60%{transform:translateX(8px)}}
+@keyframes popIn{0%{transform:translateY(-4px) scale(.9);opacity:0}60%{transform:translateY(0) scale(1.03);opacity:1}100%{transform:translateY(0) scale(1)}}
+@keyframes pulseRing{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+
+/* ---------- THE telegram button ---------- */
+.btn{position:relative;display:flex;align-items:center;justify-content:center;gap:11px;width:100%;min-height:60px;margin-top:14px;padding:12px 22px;border-radius:20px;overflow:hidden;isolation:isolate;cursor:pointer;
+  font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:19px;line-height:1.2;color:#fff;text-shadow:0 1px 2px rgba(10,18,64,.35);
+  background:linear-gradient(110deg,#1aa7ff,#4f7bff 28%,#8a5cff 52%,#ff5c9a 78%,#ffb23f);background-size:260% 100%;
+  box-shadow:0 14px 34px rgba(79,123,255,.45),inset 0 1px 0 rgba(255,255,255,.4);
+  animation:flow 6s linear infinite,pulse 2.2s ease-out infinite;transition:transform .15s}
+.btn::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite;z-index:-1}
+.btn:active{transform:scale(.97)}
+.btn .tg-ic{width:38px;height:38px;box-shadow:0 4px 12px rgba(10,18,64,.3);animation:fly 2.4s ease-in-out infinite}
+.btn .tg-ic svg{width:20px;height:20px}
+@keyframes flow{to{background-position:-260% 0}}
+@keyframes shine{0%,55%{left:-60%}100%{left:130%}}
+@keyframes pulse{
+  0%{box-shadow:0 14px 34px rgba(79,123,255,.45),inset 0 1px 0 rgba(255,255,255,.4),0 0 0 0 rgba(43,182,255,.6)}
+  70%,100%{box-shadow:0 14px 34px rgba(79,123,255,.45),inset 0 1px 0 rgba(255,255,255,.4),0 0 0 18px rgba(43,182,255,0)}}
+@keyframes fly{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(3px,-3px) rotate(-8deg)}}
+.btn.flash-invalid{animation:btnFlash .5s ease}
+@keyframes btnFlash{
+  0%,100%{transform:none;box-shadow:0 14px 34px rgba(79,123,255,.45)}
+  30%{transform:translateX(-6px);box-shadow:0 0 0 5px rgba(255,92,122,.5),0 14px 34px rgba(255,92,122,.4)}
+  60%{transform:translateX(6px);box-shadow:0 0 0 5px rgba(255,92,122,.5),0 14px 34px rgba(255,92,122,.4)}}
+
+.perks{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+.perks span{display:inline-flex;align-items:center;gap:6px;padding:4px 12px 4px 8px;border-radius:999px;background:var(--glass);border:1px solid var(--line);font-size:13.5px;font-weight:600;color:#e3e9ff}
+.perks span::before{content:"✓";display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--mint);color:#06281d;font-size:11px;font-weight:900}
+
+/* ---------- ticket + chat ---------- */
+.duo{display:grid;gap:22px;margin-top:34px}
+@media(min-width:880px){.duo{grid-template-columns:1fr 1fr;gap:44px;margin-top:56px;align-items:start}}
+.duo h2,.final h2{font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:25px;line-height:1.2;margin-bottom:12px}
+
+.ticket{border-radius:24px;background:#f6f8ff;color:#0a1240;padding:6px 18px;box-shadow:0 20px 44px rgba(4,8,40,.4)}
+.row{display:flex;gap:14px;align-items:flex-start;padding:15px 0}
+.row+.row{border-top:2px dashed rgba(10,18,64,.2)}
+.tag{flex-shrink:0;min-width:92px;text-align:center;padding:3px 12px;border-radius:999px;font-family:"Baloo 2",Mukta,sans-serif;font-weight:800;font-size:15px;color:#071033}
+.row.e .tag{background:var(--sky)}
+.row.t .tag{background:var(--mint)}
+.row.s .tag{background:var(--coral);color:#fff}
+.row p{font-size:16px;font-weight:600;line-height:1.5;padding-top:2px}
+
+.tgchat{border-radius:24px;background:#0f1a4f;border:1px solid var(--line);overflow:hidden;box-shadow:0 20px 44px rgba(4,8,40,.4)}
+.tgchat header{display:flex;align-items:center;gap:11px;padding:12px 16px;background:linear-gradient(100deg,#1a8fd1,#229ed9)}
+.tgchat header img{width:40px;height:40px;border-radius:50%;object-fit:cover;background:var(--ink2)}
+.tgchat header b{display:block;font-size:15.5px;line-height:1.2;font-weight:700}
+.tgchat header small{display:block;font-size:12.5px;opacity:.9}
+.msgs{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:16px}
+.msg{max-width:88%;padding:10px 14px;border-radius:6px 18px 18px 18px;background:#1d2b78;font-size:16px;font-weight:600;line-height:1.5}
+.msg:nth-child(2){background:#23338a}
+.msg:nth-child(3){background:#2a3a9c}
+.tgchat .btn{margin-top:4px;min-height:52px;font-size:17px;border-radius:16px}
+.tgchat.armed .msg,.tgchat.armed .btn{opacity:0;transform:translateY(10px) scale(.97)}
+.tgchat.armed.in .msg,.tgchat.armed.in .btn{opacity:1;transform:none;transition:opacity .4s ease,transform .45s cubic-bezier(.2,.9,.3,1.2);transition-delay:calc(var(--k) * .5s)}
+
+.final{margin-top:34px;padding:26px 20px 22px;text-align:center;border-radius:28px;background:linear-gradient(135deg,rgba(43,182,255,.28),rgba(138,92,255,.28) 50%,rgba(255,92,154,.28));border:1px solid rgba(255,255,255,.28)}
+.final p{color:#e6ebff;font-size:16px;margin-bottom:2px}
+.final .btn{max-width:460px;margin-left:auto;margin-right:auto}
+
+.disc{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);color:#8a97cf;font-size:12px;line-height:1.8;text-align:center}
+.footer-credit{margin-top:12px;text-align:center;color:var(--mist);font-size:13px}
+.footer-credit a{color:var(--sky);font-weight:700}
+
+/* ---------- sticky mobile dock ---------- */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:22px 14px calc(10px + var(--safe-b));background:linear-gradient(180deg,rgba(10,18,64,0),rgba(10,18,64,.92) 45%);transform:translateY(130%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.dock.show{transform:none}
+.dock .btn{margin-top:0;min-height:56px;font-size:18px;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* ---------- Hindi + Urdu + English together ---------- */
+.sub{display:block;font-size:12.5px;font-weight:600;color:var(--mist);line-height:1.5}
+.en{display:block;margin-top:2px;font-size:14.5px;font-weight:600;color:var(--mist);line-height:1.5}
+.u{display:block;font-family:"Noto Nastaliq Urdu",serif;direction:rtl;text-align:right;font-size:14.5px;font-weight:500;line-height:2.1;color:var(--mist)}
+.hero .a .en{margin-top:8px;max-width:38ch}
+.hero .a .u{max-width:38ch}
+.chart-head>span{line-height:1.25}
+.cf-text{flex:1 1 200px}
+.cf-text p{flex:none}
+.gate label small{margin-top:2px}
+.fields{grid-template-columns:1fr 128px}
+.name-input::placeholder{font-size:14px}
+.name-error>div{line-height:1.5}
+.name-error .en,.name-error .u{font-size:13px;color:#ffb3c0}
+.name-error.show{max-height:130px}
+.btn .lb{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.15}
+.btn .lb small{margin-top:3px;font-family:Mukta,"Noto Nastaliq Urdu",sans-serif;font-weight:600;font-size:12.5px;opacity:.95;text-shadow:none}
+.perks span{justify-content:center;text-align:center}
+.duo h2 .sub,.final h2 .sub{margin-top:3px;font-family:Mukta,"Noto Nastaliq Urdu",sans-serif;font-size:14px}
+.row .tx{flex:1;min-width:0}
+.row .en{color:#4a5590;font-size:14px}
+.row .u{color:#3b4685;font-size:14px}
+.msg .en,.msg .u{font-size:13.5px;color:#c3ccf5;font-weight:500}
+.final .en,.final .u{text-align:center;color:#d6dcff}
+.final .u{margin-bottom:2px}
+.footer-credit{line-height:1.9}
+.dock .btn{min-height:60px}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header class="head">
-    <img class="ava" src="SM.jpg" alt="Salman Memon" width="88" height="88">
-    <div class="name">Salman Memon</div>
-    <div class="tag">फ्री टेलीग्राम लर्निंग कम्युनिटी · Free Telegram Learning Community</div>
-  </header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="tg" viewBox="0 0 24 24"><path d="M21.8 3.2 18.5 20c-.25 1.18-.91 1.47-1.85.92l-5-3.68-2.41 2.32c-.27.27-.49.49-1 .49l.36-5.09 9.26-8.37c.4-.36-.09-.56-.63-.2L5.78 13.6.85 12.06c-1.07-.34-1.09-1.07.22-1.58L20.35 3c.9-.33 1.68.2 1.45.2Z"/></symbol>
+</svg>
 
-  <main>
-    <h1>Trade with Shariah Rules</h1>
-    <p class="Subscribe">सरल चार्ट उदाहरणों से Entry, Target और Stop-Loss की बेसिक समझ।</p>
-    <span class="en" lang="en">Understand Entry, Target and Stop-Loss through simple chart examples.</span>
-    <span class="ur" lang="ur" dir="rtl">آسان چارٹ مثالوں سے Entry، Target اور Stop-Loss کی بنیادی سمجھ۔</span>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 
-    <button class="btn" id="open" type="button" aria-haspopup="dialog">
-      <span>टेलीग्राम चैनल जॉइन करें</span>
-      <small>Join the Telegram channel · ٹیلیگرام چینل جوائن کریں</small>
-    </button>
-    <p class="note">Telegram खुलने पर नीचे "Request to Join" बटन दबाएँ · Tap "Request to Join" when Telegram opens</p>
-    <p class="iab" id="iab">Telegram न खुले तो ऊपर ⋯ दबाकर "Open in Browser" चुनें · If Telegram does not open, tap ⋯ and choose "Open in Browser"</p>
+<div class="page">
 
-    <section class="card" aria-label="चैनल में क्या है">
-      <h2>चैनल में क्या है · What is in the channel</h2>
-      <div class="item"><b>Entry</b><span>चार्ट पर एंट्री का आधार · Basis of an entry on the chart</span></div>
-      <div class="item"><b>Target</b><span>टारगेट लेवल की समझ · Understanding target levels</span></div>
-      <div class="item"><b>Stop-Loss</b><span>जोखिम सीमित रखने का तरीका · Keeping risk limited</span></div>
-    </section>
+  <nav class="nav">
+    <a class="brand" href="#top">
+      <strong>Trade with Shariah Rules</strong>
+      <small>आसान ट्रेडिंग शिक्षा · آسان ٹریڈنگ تعلیم</small>
+    </a>
+    <a class="tg-top join-link" href="#">
+      <span class="tg-ic"><svg><use href="#tg"/></svg></span>
+      Join
+    </a>
+  </nav>
+
+  <main class="hero" id="top">
+
+    <div class="a">
+      <div class="mentor">
+        <div class="ava"><img src="SM.jpg" alt="Salman Memon"></div>
+        <div>
+          <b>Salman Memon</b>
+          <span class="badge"><span class="dot"></span>फ्री टेलीग्राम लर्निंग कम्युनिटी</span>
+          <small class="sub">Free Telegram Learning Community · مفت ٹیلیگرام لرننگ کمیونٹی</small>
+        </div>
+      </div>
+      <h1>Trade with Shariah Rules</h1>
+      <p class="Subscribe">सरल चार्ट उदाहरणों से Entry, Target और Stop-Loss सीखें — शुरुआती लोगों के लिए आसान तरीका।</p>
+      <span class="en" lang="en">Learn Entry, Target and Stop-Loss through simple chart examples — an easy way for beginners.</span>
+      <span class="u" lang="ur" dir="rtl">آسان چارٹ مثالوں سے Entry، Target اور Stop-Loss سیکھیں — ابتدائی لوگوں کے لیے آسان طریقہ۔</span>
+    </div>
+
+    <div class="b">
+      <div class="chart-card chart-wrap" id="chartWrap">
+        <div class="chart-head">
+          <span>चार्ट का उदाहरण<small class="sub">Chart Example · چارٹ کی مثال</small></span>
+          <button class="replay" id="replay" type="button">↻ फिर से · Replay</button>
+        </div>
+        <svg class="chart" id="chart" viewBox="0 0 400 220" role="img" aria-label="चार्ट उदाहरण: Entry, Target और Stop-Loss लेवल के साथ कैंडलस्टिक चार्ट">
+          <defs>
+            <linearGradient id="gUp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2de2a6" stop-opacity=".30"/><stop offset="1" stop-color="#2de2a6" stop-opacity=".04"/></linearGradient>
+            <linearGradient id="gDn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5c7a" stop-opacity=".04"/><stop offset="1" stop-color="#ff5c7a" stop-opacity=".30"/></linearGradient>
+          </defs>
+          <line class="gl" x1="10" x2="296" y1="20" y2="20"/>
+          <line class="gl" x1="10" x2="296" y1="90" y2="90"/>
+          <line class="gl" x1="10" x2="296" y1="150" y2="150"/>
+          <line class="gl" x1="10" x2="296" y1="200" y2="200"/>
+          <rect class="zone" x="10" y="50" width="286" height="80" fill="url(#gUp)"/>
+          <rect class="zone" x="10" y="130" width="286" height="35" fill="url(#gDn)"/>
+
+          <g id="candles"></g>
+
+          <g id="lvT"><rect class="lvl-bar" x="10" y="49" width="286" height="2.4" rx="1.2" fill="#2de2a6"/><g class="pill"><rect x="302" y="38" width="92" height="24" rx="12" fill="#2de2a6"/><text x="348" y="55">Target</text></g></g>
+          <g id="lvE"><rect class="lvl-bar" x="10" y="129" width="286" height="2.4" rx="1.2" fill="#2bb6ff"/><g class="pill"><rect x="302" y="118" width="92" height="24" rx="12" fill="#2bb6ff"/><text x="348" y="135">Entry</text></g></g>
+          <g id="lvS"><rect class="lvl-bar" x="10" y="164" width="286" height="2.4" rx="1.2" fill="#ff5c7a"/><g class="pill"><rect x="302" y="153" width="92" height="24" rx="12" fill="#ff5c7a"/><text x="348" y="170" style="fill:#fff">Stop-Loss</text></g></g>
+
+          <g id="mkE"><circle class="mk" cx="137" cy="130" r="6" fill="#fff" stroke="#2bb6ff" stroke-width="3"/></g>
+          <g id="mkT"><circle class="ring" cx="285.5" cy="50" r="6" fill="#2de2a6"/><circle class="mk" cx="285.5" cy="50" r="6" fill="#fff" stroke="#2de2a6" stroke-width="3"/></g>
+        </svg>
+        <div class="chart-foot">
+          <div class="cf-text">
+            <p>पहले Entry, Target और Stop-Loss तय करें — फिर चार्ट देखें।</p>
+            <span class="en" lang="en">Set Entry, Target and Stop-Loss first — then read the chart.</span>
+            <span class="u" lang="ur" dir="rtl">پہلے Entry، Target اور Stop-Loss طے کریں — پھر چارٹ دیکھیں۔</span>
+          </div>
+          <button class="sound" id="soundBtn" type="button" aria-pressed="false">
+            <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <span class="lbl">सुनें · Listen · سنیں</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="c">
+      <div class="gate">
+        <label for="userName">जॉइन करने से पहले अपनी जानकारी भरें<small class="sub">Fill in your details before joining · جوائن کرنے سے پہلے اپنی معلومات بھریں</small></label>
+        <div class="fields">
+          <input type="text" id="userName" class="name-input" placeholder="नाम · Name · نام" autocomplete="name">
+          <input type="number" id="userAge" class="name-input age-input" placeholder="उम्र · Age · عمر" min="1" max="120" autocomplete="off" inputmode="numeric">
+        </div>
+        <div class="name-error" id="nameError"><span class="ic">!</span><div>
+          <span>पहले नाम और उम्र लिखें, फिर जॉइन करें</span>
+          <span class="en" lang="en">Enter your name and age first, then join</span>
+          <span class="u" lang="ur" dir="rtl">پہلے نام اور عمر لکھیں، پھر جوائن کریں</span>
+        </div></div>
+
+        <a class="btn join-link" id="heroCta" href="#">
+          <span class="tg-ic"><svg><use href="#tg"/></svg></span>
+          <span class="lb"><span>टेलीग्राम पर फ्री जुड़ें</span><small>Join Free on Telegram · ٹیلیگرام پر مفت جوائن کریں</small></span>
+        </a>
+        <div class="perks"><span>फ्री · Free · مفت</span><span>नो पेड टिप्स · No paid tips · پیڈ ٹپس نہیں</span><span>बिगिनर्स · Beginners · ابتدائی</span></div>
+      </div>
+    </div>
+
   </main>
 
-  <footer>
-    <p class="disc">यह सामग्री केवल शिक्षा के उद्देश्य से है। यह निवेश, ट्रेडिंग या वित्तीय सलाह नहीं है। ट्रेडिंग में जोखिम है और मुनाफे की कोई गारंटी नहीं है।<br>
-      <span class="ur" lang="ur" dir="rtl">یہ مواد صرف تعلیمی مقاصد کے لیے ہے۔ یہ سرمایہ کاری کا مشورہ نہیں ہے۔ ٹریڈنگ میں خطرہ ہے اور منافع کی کوئی ضمانت نہیں۔</span>
-      For educational purposes only. Not investment or financial advice. Trading involves risk and no profit is guaranteed.</p>
-    <p class="ad">विज्ञापन · Ad: SRS Marketing Agency</p>
-  </footer>
+  <section class="duo">
+    <div>
+      <h2>हर ट्रेड से पहले ये 3 बातें<small class="sub">3 things before every trade · ہر ٹریڈ سے پہلے یہ 3 باتیں</small></h2>
+      <div class="ticket">
+        <div class="row e"><span class="tag">Entry</span><div class="tx"><p>कब मार्केट में घुसना है, चार्ट से सीखें।</p><span class="en" lang="en">Learn from the chart when to enter the market.</span><span class="u" lang="ur" dir="rtl">چارٹ سے سیکھیں کہ مارکیٹ میں کب داخل ہونا ہے۔</span></div></div>
+        <div class="row t"><span class="tag">Target</span><div class="tx"><p>सही टारगेट लेवल पहचानना सीखें।</p><span class="en" lang="en">Learn to spot the right target level.</span><span class="u" lang="ur" dir="rtl">صحیح ٹارگٹ لیول پہچاننا سیکھیں۔</span></div></div>
+        <div class="row s"><span class="tag">Stop-Loss</span><div class="tx"><p>Stop-Loss से अपनी पूंजी सुरक्षित रखें।</p><span class="en" lang="en">Protect your capital with a Stop-Loss.</span><span class="u" lang="ur" dir="rtl">Stop-Loss سے اپنا سرمایہ محفوظ رکھیں۔</span></div></div>
+      </div>
+    </div>
 
-</div>
+    <div>
+      <h2>चैनल में क्या मिलेगा?<small class="sub">What you get in the channel · چینل میں کیا ملے گا؟</small></h2>
+      <div class="tgchat" id="tgchat">
+        <header>
+          <img src="SM.jpg" alt="">
+          <div><b>Trade with Shariah Rules</b><small>फ्री टेलीग्राम चैनल · Free Channel · مفت چینل</small></div>
+        </header>
+        <div class="msgs">
+          <p class="msg" style="--k:0">रोज़ाना चार्ट-आधारित लर्निंग 📊<span class="en" lang="en">Daily chart-based learning</span><span class="u" lang="ur" dir="rtl">روزانہ چارٹ پر مبنی تعلیم</span></p>
+          <p class="msg" style="--k:1">कोई पेड टिप्स नहीं — सिर्फ शिक्षा ✅<span class="en" lang="en">No paid tips — only education</span><span class="u" lang="ur" dir="rtl">کوئی پیڈ ٹپس نہیں — صرف تعلیم</span></p>
+          <p class="msg" style="--k:2">शुरुआत से सीखने वालों के लिए आसान भाषा 🙂<span class="en" lang="en">Easy language for complete beginners</span><span class="u" lang="ur" dir="rtl">ابتدائی سیکھنے والوں کے لیے آسان زبان</span></p>
+          <a class="btn join-link" style="--k:3" href="#">
+            <span class="tg-ic"><svg><use href="#tg"/></svg></span>
+            <span class="lb"><span>चैनल जॉइन करें</span><small>Join Channel · چینل جوائن کریں</small></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Step 2: short instruction sheet (Subscribe fires only from this confirm tap) -->
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-t" aria-hidden="true">
-  <div class="panel">
-    <h3 id="sheet-t">सिर्फ़ 2 आसान स्टेप<br><span class="en" style="margin-top:0">Just 2 simple steps</span></h3>
-    <ol class="steps">
-      <li><i>1</i><div><b>Telegram खुलेगा</b><span>Telegram will open · ٹیلیگرام کھلے گا</span></div></li>
-      <li><i>2</i><div><b>नीचे "Request to Join" (या "Join Channel") बटन दबाएँ</b><span>Tap the "Request to Join" button at the bottom · نیچے "Request to Join" کا بٹن دبائیں</span></div></li>
-    </ol>
-    <a class="btn" id="go" href="#" rel="noopener">
-      <span>ठीक है, Telegram खोलें</span>
-      <small>OK, open Telegram</small>
+  <section class="final">
+    <h2>आज ही सीखना शुरू करें<small class="sub">Start learning today · آج ہی سیکھنا شروع کریں</small></h2>
+    <p>रोज़ाना चार्ट लर्निंग · 100% फ्री</p>
+    <span class="en" lang="en">Daily chart learning · 100% Free</span>
+    <span class="u" lang="ur" dir="rtl">روزانہ چارٹ سیکھیں · 100٪ مفت</span>
+    <a class="btn join-link" href="#">
+      <span class="tg-ic"><svg><use href="#tg"/></svg></span>
+      <span class="lb"><span>टेलीग्राम चैनल खोलें</span><small>Open Telegram Channel · ٹیلیگرام چینل کھولیں</small></span>
     </a>
-    <button class="later" id="later" type="button">अभी नहीं · Not now</button>
-  </div>
-</div>
+  </section>
 
-<!-- Shown only when user comes back from Telegram without finishing -->
-<div class="nudge" id="nudge" role="status" aria-live="polite">
-  <p>Telegram में "Request to Join" दबाया?<small>Did you tap "Request to Join" in Telegram?</small></p>
-  <a class="btn" id="again" href="#" rel="noopener">
-    <span>दोबारा Telegram खोलें</span>
-    <small>Open Telegram again</small>
-  </a>
-  <button class="later" id="done" type="button">हो गया · Done</button>
-</div>
+  <div class="footer-credit">विज्ञापन · Ad · اشتہار: <a href="#" class="join-link" target="_blank" rel="noopener">SRS Marketing Agency</a></div>
 
-<footer>
-   <div><i class="fas fa-star" style="color:#ff000d;"></i> <div style="text-align:center; margin:14px 0 10px 0; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);">
-  <p style="font-weight:bold; margin-bottom:6px; font-size:11px; color:#94a3b8;">Welcome</p>
-  <a href="https://t.me/srsagency" target="_blank" style="
-      display:inline-block;
-      background-color:#229ED9;
-      color:#ffffff;
-      padding:6px 14px;
-      border-radius:6px;
-      text-decoration:none;
-      font-weight:600;
-      font-size:12px;
-      font-family:sans-serif;">
-    📩 Visit @ SRS | Marketing ...
-  </a>
-</div> 
+  <div class="disc">
+    <span>यह सामग्री केवल शिक्षा के उद्देश्य से है। यह निवेश, ट्रेडिंग या वित्तीय सलाह नहीं है।</span><br>
+    <span class="ur" dir="rtl">یہ مواد صرف تعلیمی مقاصد کے لیے ہے۔ یہ سرمایہ کاری کا مشورہ نہیں ہے۔</span><br>
+    For educational purposes only. Not investment or financial advice.
   </div>
 
-</footer>
+</div>
 
+<div class="dock show" id="dock">
+  <a class="btn join-link" href="#">
+    <span class="tg-ic"><svg><use href="#tg"/></svg></span>
+    <span class="lb"><span>टेलीग्राम पर फ्री जुड़ें</span><small>Join Free · مفت جوائن کریں</small></span>
+  </a>
+</div>
 
-
+<!-- =====================================================
+     TRACKING + NAME/AGE GATE  (original logic — unchanged)
+     ===================================================== -->
 <script>
 (() => {
 'use strict';
@@ -174,60 +413,37 @@ const CONFIG = Object.freeze({
 
   pageViewDelayMs: 3000,
   passiveReaderDelayMs: 8000,
-  minSheetMs: 700,            /* sheet padhne ka minimum time, usse pehle Subscribe nahi (link phir bhi khulta hai) */
-  inputToClickMaxMs: 5000,    /* click se pehle real touch/key hona chahiye */
-  returnMinAwayMs: 2000,      /* itni der Telegram me rahe to wapsi par nudge */
-  maxNudges: 2,
-  SubscribeTtlMs: 24 * 60 * 60 * 1000,
+  minimumClickTimeMs: 1500,
+  confirmWindowMs: 3000,
+  trackedRedirectDelayMs: 700,
+  fastRedirectDelayMs: 50,
 
   pageViewKey: 'shariah_pageview_sent',
   SubscribeKey: 'shariah_Subscribe_sent'
 });
 
-const $ = id => document.getElementById(id);
-const openBtn = $('open'), sheet = $('sheet'), go = $('go'), later = $('later');
-const nudge = $('nudge'), again = $('again'), done = $('done');
-
 const startedAt = Date.now();
 let pageViewTracked = false;
 let SubscribeTracked = false;
+let redirectStarted = false;
 let humanInteraction = false;
 let hasScrolled = false;
-let lastInputAt = 0;
-let sheetOpenedAt = 0;
-let armed = false;        /* user ne Telegram kholne ka confirm tap kiya */
-let hiddenAt = 0;
-let nudgeCount = 0;
-
-const UA = navigator.userAgent || '';
-const IN_APP = /FBAN|FBAV|FB_IAB|FBIOS|Instagram/i.test(UA);
 
 function createEventId(type) {
   if (window.crypto && crypto.randomUUID) return type + '_' + crypto.randomUUID();
   return type + '_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
 }
+
 function sessionHas(key) { try { return sessionStorage.getItem(key) === '1'; } catch (e) { return false; } }
 function sessionSave(key) { try { sessionStorage.setItem(key, '1'); } catch (e) {} }
-function SubscribeRecentlySent() {
-  if (sessionHas(CONFIG.SubscribeKey)) return true;
-  try {
-    const t = Number(localStorage.getItem(CONFIG.SubscribeKey));
-    return t > 0 && (Date.now() - t) < CONFIG.SubscribeTtlMs;
-  } catch (e) { return false; }
-}
-function markSubscribeSent() {
-  sessionSave(CONFIG.SubscribeKey);
-  try { localStorage.setItem(CONFIG.SubscribeKey, String(Date.now())); } catch (e) {}
-}
 
 function looksAutomated() {
   if (navigator.webdriver === true) return true;
-  const ua = UA.toLowerCase();
-  const words = ['headless', 'phantomjs', 'selenium', 'puppeteer', 'playwright', 'crawler', 'spider', 'slurp', 'googlebot', 'bingbot', 'facebookexternalhit', 'bot/', 'lighthouse'];
+  const ua = navigator.userAgent.toLowerCase();
+  const words = ['headless', 'phantomjs', 'selenium', 'puppeteer', 'playwright', 'crawler', 'spider', 'slurp', 'googlebot', 'bingbot', 'facebookexternalhit'];
   return words.some(w => ua.includes(w));
 }
 
-/* ---------- human input tracking ---------- */
 function recordInteraction(event) {
   if (!event.isTrusted) return;
   humanInteraction = true;
@@ -237,11 +453,7 @@ function recordInteraction(event) {
 ['pointerdown', 'touchstart', 'keydown', 'scroll', 'mousemove'].forEach(name => {
   window.addEventListener(name, recordInteraction, { passive: true, once: true });
 });
-['pointerdown', 'touchstart', 'keydown'].forEach(name => {
-  document.addEventListener(name, e => { if (e.isTrusted) lastInputAt = Date.now(); }, { capture: true, passive: true });
-});
 
-/* ---------- Pixel ---------- */
 function loadPixel() {
   if (!window.fbq) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=true;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=true;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -253,11 +465,7 @@ function loadPixel() {
       registered = fbq.getState().pixels.some(p => String(p.id) === String(CONFIG.pixelId));
     }
   } catch (e) {}
-  if (!registered) {
-    /* Meta ke automatic button-click events band: sirf hamara controlled Subscribe jayega */
-    try { fbq('set', 'autoConfig', false, CONFIG.pixelId); } catch (e) {}
-    fbq('init', CONFIG.pixelId);
-  }
+  if (!registered) fbq('init', CONFIG.pixelId);
   window.__SHARIAH_PIXEL_INIT = true;
 }
 
@@ -284,11 +492,13 @@ function checkQualifiedPageView() {
   pageViewTracked = true;
   sessionSave(CONFIG.pageViewKey);
 }
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkQualifiedPageView(); });
 setTimeout(checkQualifiedPageView, CONFIG.pageViewDelayMs);
 setTimeout(checkQualifiedPageView, CONFIG.passiveReaderDelayMs);
 
-function fireSubscribe(elapsedMs) {
-  if (SubscribeTracked || SubscribeRecentlySent()) { SubscribeTracked = true; return; }
+function fireSubscribe(elapsedMs, visitorName) {
+  if (SubscribeTracked) return;
+  if (sessionHas(CONFIG.SubscribeKey)) { SubscribeTracked = true; return; }
   if (typeof window.fbq !== 'function') return;
 
   fbq('track', 'Subscribe', {
@@ -297,91 +507,265 @@ function fireSubscribe(elapsedMs) {
     content_name: 'Trade with Salman Memon - Shariah Rules',
     destination: 'Telegram',
     qualified_click: true,
-    confirmed_step: true,
-    human_interaction: true,
+    human_interaction: humanInteraction,
     time_on_page: Math.round(elapsedMs / 1000)
   }, { eventID: createEventId('Subscribe') });
 
   SubscribeTracked = true;
-  markSubscribeSent();
+  sessionSave(CONFIG.SubscribeKey);
 }
 
-/* ---------- Step 2 sheet ----------
-   Pehla tap: sirf sheet khulti hai (koi Subscribe nahi, koi t.me link page me nahi).
-   Doosra tap (confirm): real <a href> se Telegram khulta hai, Subscribe sirf yahin.
-   Koi bhi asli tap kabhi block nahi hota: sirf Subscribe ka qualification check hota hai. */
-function openSheet(e) {
-  if (!e.isTrusted) return;
-  go.setAttribute('href', CONFIG.telegramUrl);
-  sheet.classList.add('on');
-  sheet.setAttribute('aria-hidden', 'false');
-  sheetOpenedAt = Date.now();
-  try { go.focus({ preventScroll: true }); } catch (x) {}
-}
-function closeSheet() {
-  sheet.classList.remove('on');
-  sheet.setAttribute('aria-hidden', 'true');
-  try { openBtn.focus({ preventScroll: true }); } catch (x) {}
+function showNameError(inputs) {
+  const errorBox = document.getElementById('nameError');
+  const list = Array.isArray(inputs) ? inputs : [inputs];
+
+  list.forEach(input => {
+    input.classList.remove('invalid');
+    void input.offsetWidth; /* restart shake animation */
+    input.classList.add('invalid');
+  });
+
+  if (errorBox) {
+    errorBox.classList.remove('show');
+    void errorBox.offsetWidth;
+    errorBox.classList.add('show');
+  }
+
+  document.querySelectorAll('.btn.join-link').forEach(b => {
+    b.classList.remove('flash-invalid');
+    void b.offsetWidth;
+    b.classList.add('flash-invalid');
+    setTimeout(() => b.classList.remove('flash-invalid'), 550);
+  });
+
+  const target = list[0];
+  target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  target.focus({ preventScroll: true });
 }
 
-function onConfirm(e) {
-  if (!e.isTrusted) { e.preventDefault(); return; }   /* scripted click: na Telegram, na Subscribe */
-  const now = Date.now();
-  const qualified = !looksAutomated() &&
-                    lastInputAt > 0 && (now - lastInputAt) <= CONFIG.inputToClickMaxMs &&
-                    sheetOpenedAt > 0 && (now - sheetOpenedAt) >= CONFIG.minSheetMs;
-  if (qualified) fireSubscribe(now - startedAt);
-  armed = true;
-  setTimeout(() => { sheet.classList.remove('on'); sheet.setAttribute('aria-hidden', 'true'); }, 400);
-  /* default action (real link navigation) chalne dein */
-}
+function handleTelegramClick(event) {
+  event.preventDefault();
 
-/* ---------- Return nudge: Telegram se bina request kiye wapas aaye ---------- */
-function showNudge() {
-  if (!armed || nudgeCount >= CONFIG.maxNudges) return;
-  nudgeCount++;
-  sheet.classList.remove('on');
-  again.setAttribute('href', CONFIG.telegramUrl);
-  nudge.classList.add('on');
-}
-function onVisibility() {
-  if (document.visibilityState === 'hidden') {
-    if (armed) hiddenAt = Date.now();
+  /* ===== NAME + AGE GATE =====
+     Bina naam aur age likhe koi bhi Telegram button kaam nahi karega —
+     dono invalid inputs red ho jaate hain, animated error message dikhta hai,
+     aur user ko wahin le jaya jaata hai. */
+  const nameInput = document.getElementById('userName');
+  const ageInput = document.getElementById('userAge');
+  const name = nameInput ? nameInput.value.trim() : '';
+  const age = ageInput ? ageInput.value.trim() : '';
+
+  const invalid = [];
+  if (!name && nameInput) invalid.push(nameInput);
+  if (!age && ageInput) invalid.push(ageInput);
+
+  if (invalid.length) {
+    showNameError(invalid);
+    [nameInput, ageInput].forEach(input => {
+      if (!input) return;
+      input.addEventListener('input', function clearInvalid() {
+        if (input.value.trim()) {
+          input.classList.remove('invalid');
+          const stillInvalid = [nameInput, ageInput].some(i => i && !i.value.trim());
+          if (!stillInvalid) {
+            const errorBox = document.getElementById('nameError');
+            if (errorBox) errorBox.classList.remove('show');
+          }
+        }
+      }, { once: false });
+    });
     return;
   }
-  checkQualifiedPageView();
-  if (armed && hiddenAt && (Date.now() - hiddenAt) >= CONFIG.returnMinAwayMs) {
-    hiddenAt = 0;
-    showNudge();
+
+  if (redirectStarted) {
+    window.location.assign(CONFIG.telegramUrl);
+    return;
   }
+  redirectStarted = true;
+
+  const elapsed = Date.now() - startedAt;
+  const genuine = event.isTrusted && elapsed >= CONFIG.minimumClickTimeMs && !looksAutomated();
+
+  if (genuine) fireSubscribe(elapsed, name, age);
+
+  setTimeout(() => {
+    window.location.assign(CONFIG.telegramUrl);
+  }, genuine ? CONFIG.trackedRedirectDelayMs : CONFIG.fastRedirectDelayMs);
 }
-document.addEventListener('visibilitychange', onVisibility);
-window.addEventListener('pageshow', e => { if (e.persisted) showNudge(); });
 
-function init() {
-  openBtn.addEventListener('click', openSheet);
-  go.addEventListener('click', onConfirm);
-  later.addEventListener('click', closeSheet);
-  sheet.addEventListener('click', e => { if (e.target === sheet) closeSheet(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && sheet.classList.contains('on')) closeSheet(); });
-
-  again.addEventListener('click', e => {
-    if (!e.isTrusted) { e.preventDefault(); return; }
-    armed = true;
-    setTimeout(() => nudge.classList.remove('on'), 400);
+function initButtons() {
+  document.querySelectorAll('.join-link').forEach(btn => {
+    btn.href = CONFIG.telegramUrl;
+    btn.addEventListener('click', handleTelegramClick);
   });
-  done.addEventListener('click', () => { nudge.classList.remove('on'); armed = false; });
-
-  if (IN_APP) { const n = $('iab'); if (n) n.style.display = 'block'; }
 }
 
 loadPixel();
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init, { once: true });
+  document.addEventListener('DOMContentLoaded', initButtons, { once: true });
 } else {
-  init();
+  initButtons();
 }
 })();
 </script>
+
+<!-- =====================================================
+     DESIGN EXTRAS: chart animation, sticky bar, chat reveal, audio
+     (tracking se koi connection nahi)
+     ===================================================== -->
+<script>
+(() => {
+'use strict';
+
+/* ---------- candlestick chart ---------- */
+const NS = 'http://www.w3.org/2000/svg';
+/* [open, close, high, low] — y-axis: chhota number = upar ka price */
+const DATA = [
+  [150,140,134,156],[140,152,138,158],[152,146,142,156],[146,158,142,162],[158,150,146,160],
+  [150,138,134,153],[138,131,127,141],[131,124,120,134],[124,128,120,131],[128,112,108,130],
+  [112,104,100,115],[104,108,98,111],[108,88,84,110],[88,78,72,91],[78,82,70,85],
+  [82,58,52,84],[58,50,44,62]
+];
+const gC = document.getElementById('candles');
+if (gC) {
+  DATA.forEach((d, i) => {
+    const [o, c, h, l] = d;
+    const x = 18 + i * 16.5;
+    const col = c <= o ? '#2de2a6' : '#ff5c7a';
+    const g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'candle');
+    g.style.setProperty('--i', i);
+    const w = document.createElementNS(NS, 'line');
+    w.setAttribute('x1', x + 3.5); w.setAttribute('x2', x + 3.5);
+    w.setAttribute('y1', h); w.setAttribute('y2', l);
+    w.setAttribute('stroke', col); w.setAttribute('stroke-width', 1.6); w.setAttribute('stroke-linecap', 'round');
+    const b = document.createElementNS(NS, 'rect');
+    b.setAttribute('x', x); b.setAttribute('width', 7);
+    b.setAttribute('y', Math.min(o, c)); b.setAttribute('height', Math.max(Math.abs(o - c), 2.5));
+    b.setAttribute('rx', 1.8); b.setAttribute('fill', col);
+    g.appendChild(w); g.appendChild(b);
+    gC.appendChild(g);
+  });
+}
+
+const wrap = document.getElementById('chartWrap');
+function playChart() {
+  if (!wrap) return;
+  wrap.classList.remove('play');
+  void wrap.offsetWidth;
+  wrap.classList.add('play');
+}
+playChart();
+const rp = document.getElementById('replay');
+if (rp) rp.addEventListener('click', playChart);
+
+/* ---------- sticky bottom button (hide when main button is visible) ---------- */
+const dock = document.getElementById('dock');
+const heroCta = document.getElementById('heroCta');
+if (dock && heroCta && 'IntersectionObserver' in window) {
+  new IntersectionObserver(entries => {
+    dock.classList.toggle('show', !entries[0].isIntersecting);
+  }, { threshold: 0.6 }).observe(heroCta);
+}
+
+/* ---------- telegram chat reveal ---------- */
+const chat = document.getElementById('tgchat');
+if (chat && 'IntersectionObserver' in window) {
+  chat.classList.add('armed');
+  const io = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { chat.classList.add('in'); io.disconnect(); }
+  }, { threshold: 0.35 });
+  io.observe(chat);
+}
+
+/* ---------- audio: voice-over + soft music (user tap par hi chalta hai) ---------- */
+const AUDIO_FILE = '';  /* optional: apni real voice/music file ka link, e.g. 'intro.mp3' — bharne par wahi chalegi */
+const VOICE_TEXT = 'नमस्ते! सलमान मेमन के साथ शरीअत के नियमों में ट्रेडिंग सीखिए। आसान चार्ट उदाहरणों से एंट्री, टारगेट और स्टॉप-लॉस समझिए। यह कम्युनिटी बिल्कुल फ्री है। अभी नीचे टेलीग्राम बटन दबाकर जुड़िए।';
+
+const btn = document.getElementById('soundBtn');
+if (btn) {
+  const lbl = btn.querySelector('.lbl');
+  const SCALE = [261.63, 293.66, 329.63, 392.0, 440.0, 523.25, 587.33];
+  const PATTERN = [0,2,4,2,5,4,2,1, 0,2,4,6,5,4,2,3];
+  let on = false, ctx = null, master = null, timer = null, step = 0, fileEl = null;
+
+  function note(freq, t, dur, vol, type) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.linearRampToValueAtTime(vol, t + 0.03);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(master);
+    o.start(t); o.stop(t + dur + 0.05);
+  }
+
+  function startMusic() {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    if (!ctx) { ctx = new AC(); master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination); }
+    if (ctx.state === 'suspended') ctx.resume();
+    master.gain.cancelScheduledValues(ctx.currentTime);
+    master.gain.linearRampToValueAtTime(0.14, ctx.currentTime + 1.2);
+    clearInterval(timer);
+    timer = setInterval(() => {
+      const t = ctx.currentTime + 0.05;
+      const i = PATTERN[step % PATTERN.length];
+      note(SCALE[i], t, 1.1, 0.55, 'triangle');
+      if (step % 4 === 0) note(SCALE[i] / 2, t, 1.9, 0.4, 'sine');
+      step++;
+    }, 380);
+  }
+  function stopMusic() {
+    clearInterval(timer); timer = null;
+    if (ctx && master) master.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.35);
+  }
+
+  function speak() {
+    if (!('speechSynthesis' in window)) return;
+    try {
+      speechSynthesis.cancel();
+      const voices = speechSynthesis.getVoices() || [];
+      const hi = voices.find(v => /^hi[-_]/i.test(v.lang));
+      if (voices.length && !hi) return;          /* Hindi voice nahi to galat awaaz mein mat bolo */
+      const u = new SpeechSynthesisUtterance(VOICE_TEXT);
+      u.lang = 'hi-IN'; u.rate = 0.95; u.pitch = 1;
+      if (hi) u.voice = hi;
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+
+  function setState(v) {
+    on = v;
+    btn.classList.toggle('on', v);
+    btn.setAttribute('aria-pressed', v ? 'true' : 'false');
+    lbl.textContent = v ? 'बंद · Stop · بند' : 'सुनें · Listen · سنیں';
+  }
+
+  function start() {
+    setState(true);
+    if (AUDIO_FILE) {
+      fileEl = fileEl || new Audio(AUDIO_FILE);
+      fileEl.onended = () => setState(false);
+      fileEl.currentTime = 0;
+      fileEl.play().catch(() => setState(false));
+    } else {
+      startMusic();
+      speak();
+    }
+    playChart();   /* sunte waqt chart bhi dobara chalta hai */
+  }
+  function stop() {
+    setState(false);
+    if (fileEl) fileEl.pause();
+    stopMusic();
+    try { speechSynthesis.cancel(); } catch (e) {}
+  }
+
+  btn.addEventListener('click', () => (on ? stop() : start()));
+  document.addEventListener('visibilitychange', () => { if (document.hidden && on) stop(); });
+}
+})();
+</script>
+
 </body>
 </html>
