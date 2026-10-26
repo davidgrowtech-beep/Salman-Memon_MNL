@@ -37,7 +37,7 @@ body{background:var(--bg);color:var(--text);font-family:Mukta,"Noto Sans Devanag
 .tag{margin-top:2px;font-size:13.5px;color:var(--muted)}
 
 h1{margin-top:22px;font-size:28px;line-height:1.25;font-weight:700;text-align:center}
-.lead{margin-top:10px;text-align:center;font-size:16.5px}
+.Subscribe{margin-top:10px;text-align:center;font-size:16.5px}
 .en{display:block;margin-top:6px;text-align:center;font-size:14.5px;color:var(--muted)}
 .ur{display:block;margin-top:4px;text-align:center;direction:rtl;font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Geeza Pro","Noto Naskh Arabic",serif;font-size:14.5px;line-height:2.1;color:var(--muted)}
 
@@ -88,7 +88,7 @@ h1{margin-top:22px;font-size:28px;line-height:1.25;font-weight:700;text-align:ce
 
   <main>
     <h1>Trade with Shariah Rules</h1>
-    <p class="lead">सरल चार्ट उदाहरणों से Entry, Target और Stop-Loss की बेसिक समझ।</p>
+    <p class="Subscribe">सरल चार्ट उदाहरणों से Entry, Target और Stop-Loss की बेसिक समझ।</p>
     <span class="en" lang="en">Understand Entry, Target and Stop-Loss through simple chart examples.</span>
     <span class="ur" lang="ur" dir="rtl">آسان چارٹ مثالوں سے Entry، Target اور Stop-Loss کی بنیادی سمجھ۔</span>
 
@@ -116,7 +116,7 @@ h1{margin-top:22px;font-size:28px;line-height:1.25;font-weight:700;text-align:ce
 
 </div>
 
-<!-- Step 2: short instruction sheet (Lead fires only from this confirm tap) -->
+<!-- Step 2: short instruction sheet (Subscribe fires only from this confirm tap) -->
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-t" aria-hidden="true">
   <div class="panel">
     <h3 id="sheet-t">सिर्फ़ 2 आसान स्टेप<br><span class="en" style="margin-top:0">Just 2 simple steps</span></h3>
@@ -152,14 +152,14 @@ const CONFIG = Object.freeze({
 
   pageViewDelayMs: 3000,
   passiveReaderDelayMs: 8000,
-  minSheetMs: 700,            /* sheet padhne ka minimum time, usse pehle Lead nahi (link phir bhi khulta hai) */
+  minSheetMs: 700,            /* sheet padhne ka minimum time, usse pehle Subscribe nahi (link phir bhi khulta hai) */
   inputToClickMaxMs: 5000,    /* click se pehle real touch/key hona chahiye */
   returnMinAwayMs: 2000,      /* itni der Telegram me rahe to wapsi par nudge */
   maxNudges: 2,
-  leadTtlMs: 24 * 60 * 60 * 1000,
+  SubscribeTtlMs: 24 * 60 * 60 * 1000,
 
   pageViewKey: 'shariah_pageview_sent',
-  leadKey: 'shariah_lead_sent'
+  SubscribeKey: 'shariah_Subscribe_sent'
 });
 
 const $ = id => document.getElementById(id);
@@ -168,7 +168,7 @@ const nudge = $('nudge'), again = $('again'), done = $('done');
 
 const startedAt = Date.now();
 let pageViewTracked = false;
-let leadTracked = false;
+let SubscribeTracked = false;
 let humanInteraction = false;
 let hasScrolled = false;
 let lastInputAt = 0;
@@ -186,16 +186,16 @@ function createEventId(type) {
 }
 function sessionHas(key) { try { return sessionStorage.getItem(key) === '1'; } catch (e) { return false; } }
 function sessionSave(key) { try { sessionStorage.setItem(key, '1'); } catch (e) {} }
-function leadRecentlySent() {
-  if (sessionHas(CONFIG.leadKey)) return true;
+function SubscribeRecentlySent() {
+  if (sessionHas(CONFIG.SubscribeKey)) return true;
   try {
-    const t = Number(localStorage.getItem(CONFIG.leadKey));
-    return t > 0 && (Date.now() - t) < CONFIG.leadTtlMs;
+    const t = Number(localStorage.getItem(CONFIG.SubscribeKey));
+    return t > 0 && (Date.now() - t) < CONFIG.SubscribeTtlMs;
   } catch (e) { return false; }
 }
-function markLeadSent() {
-  sessionSave(CONFIG.leadKey);
-  try { localStorage.setItem(CONFIG.leadKey, String(Date.now())); } catch (e) {}
+function markSubscribeSent() {
+  sessionSave(CONFIG.SubscribeKey);
+  try { localStorage.setItem(CONFIG.SubscribeKey, String(Date.now())); } catch (e) {}
 }
 
 function looksAutomated() {
@@ -232,7 +232,7 @@ function loadPixel() {
     }
   } catch (e) {}
   if (!registered) {
-    /* Meta ke automatic button-click events band: sirf hamara controlled Lead jayega */
+    /* Meta ke automatic button-click events band: sirf hamara controlled Subscribe jayega */
     try { fbq('set', 'autoConfig', false, CONFIG.pixelId); } catch (e) {}
     fbq('init', CONFIG.pixelId);
   }
@@ -265,11 +265,11 @@ function checkQualifiedPageView() {
 setTimeout(checkQualifiedPageView, CONFIG.pageViewDelayMs);
 setTimeout(checkQualifiedPageView, CONFIG.passiveReaderDelayMs);
 
-function fireLead(elapsedMs) {
-  if (leadTracked || leadRecentlySent()) { leadTracked = true; return; }
+function fireSubscribe(elapsedMs) {
+  if (SubscribeTracked || SubscribeRecentlySent()) { SubscribeTracked = true; return; }
   if (typeof window.fbq !== 'function') return;
 
-  fbq('track', 'Lead', {
+  fbq('track', 'Subscribe', {
     value: 0,
     currency: 'INR',
     content_name: 'Trade with Salman Memon - Shariah Rules',
@@ -278,16 +278,16 @@ function fireLead(elapsedMs) {
     confirmed_step: true,
     human_interaction: true,
     time_on_page: Math.round(elapsedMs / 1000)
-  }, { eventID: createEventId('lead') });
+  }, { eventID: createEventId('Subscribe') });
 
-  leadTracked = true;
-  markLeadSent();
+  SubscribeTracked = true;
+  markSubscribeSent();
 }
 
 /* ---------- Step 2 sheet ----------
-   Pehla tap: sirf sheet khulti hai (koi Lead nahi, koi t.me link page me nahi).
-   Doosra tap (confirm): real <a href> se Telegram khulta hai, Lead sirf yahin.
-   Koi bhi asli tap kabhi block nahi hota: sirf Lead ka qualification check hota hai. */
+   Pehla tap: sirf sheet khulti hai (koi Subscribe nahi, koi t.me link page me nahi).
+   Doosra tap (confirm): real <a href> se Telegram khulta hai, Subscribe sirf yahin.
+   Koi bhi asli tap kabhi block nahi hota: sirf Subscribe ka qualification check hota hai. */
 function openSheet(e) {
   if (!e.isTrusted) return;
   go.setAttribute('href', CONFIG.telegramUrl);
@@ -303,12 +303,12 @@ function closeSheet() {
 }
 
 function onConfirm(e) {
-  if (!e.isTrusted) { e.preventDefault(); return; }   /* scripted click: na Telegram, na Lead */
+  if (!e.isTrusted) { e.preventDefault(); return; }   /* scripted click: na Telegram, na Subscribe */
   const now = Date.now();
   const qualified = !looksAutomated() &&
                     lastInputAt > 0 && (now - lastInputAt) <= CONFIG.inputToClickMaxMs &&
                     sheetOpenedAt > 0 && (now - sheetOpenedAt) >= CONFIG.minSheetMs;
-  if (qualified) fireLead(now - startedAt);
+  if (qualified) fireSubscribe(now - startedAt);
   armed = true;
   setTimeout(() => { sheet.classList.remove('on'); sheet.setAttribute('aria-hidden', 'true'); }, 400);
   /* default action (real link navigation) chalne dein */
